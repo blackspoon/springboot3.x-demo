@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>server details</title>
+</head>
+<body>
+
+<div id="mainContents">
+    <h2>CPU</h2>
+    <table border="1px">
+        <thead>
+        <tr>
+            <th>属性</th>
+            <th>值</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>核心数</td>
+            <td th:text="${server.cpu.cpuNum}">0个</td>
+        </tr>
+        <tr>
+            <td>用户使用率</td>
+            <td th:text="${server.cpu.used + '%'}">0%</td>
+        </tr>
+        <tr>
+            <td>系统使用率</td>
+            <td th:text="${server.cpu.sys + '%'}">0%</td>
+        </tr>
+        <tr>
+            <td>当前空闲率</td>
+            <td th:text="${server.cpu.free + '%'}">0%</td>
+        </tr>
+        </tbody>
+    </table>
+    <br/><br/><br/><br/>
+    <h2>内存</h2>
+    <table border="1px">
+        <thead>
+        <tr>
+            <th>属性</th>
+            <th>内存</th>
+            <th>JVM</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>总内存</td>
+            <td th:text="${server.mem.total + 'G'}">0GB</td>
+            <td th:text="${server.jvm.total + 'M'}">0MB</td>
+        </tr>
+        <tr>
+            <td>已用内存</td>
+            <td th:text="${server.mem.used + 'G'}">0GB</td>
+            <td th:text="${server.jvm.used + 'M'}">0MB</td>
+        </tr>
+        <tr>
+            <td>剩余内存</td>
+            <td th:text="${server.mem.free + 'G'}">0GB</td>
+            <td th:text="${server.jvm.free + 'M'}">0MB</td>
+        </tr>
+        <tr>
+            <td>使用率</td>
+            <td th:class="${server.mem.usage gt 80} ? 'text-danger'">[[${server.mem.usage}]]%</td>
+            <td th:class="${server.jvm.usage gt 80} ? 'text-danger'">[[${server.jvm.usage}]]%</td>
+        </tr>
+        </tbody>
+    </table>
+    <br/><br/><br/><br/>
+    <h2>服务器信息</h2>
+    <table border="1px">
+        <tbody>
+        <tr>
+            <td>服务器名称</td>
+            <td th:text="${server.sys.computerName}">RuoYi</td>
+            <td>操作系统</td>
+            <td th:text="${server.sys.osName}">Linux</td>
+        </tr>
+        <tr>
+            <td>服务器IP</td>
+            <td th:text="${server.sys.computerIp}">127.0.0.1</td>
+            <td>系统架构</td>
+            <td th:text="${server.sys.osArch}">amd64</td>
+        </tr>
+        </tbody>
+    </table>
+    <br/><br/><br/><br/>
+    <h2>Java虚拟机信息</h2>
+    <table border="1px">
+        <tbody>
+        <tr>
+            <td>Java名称</td>
+            <td th:text="${server.jvm.name}">Java</td>
+            <td>Java版本</td>
+            <td th:text="${server.jvm.version}">1.8.0</td>
+        </tr>
+        <tr>
+            <td>启动时间</td>
+            <td th:text="${server.jvm.startTime}">2018-12-31 00:00:00</td>
+            <td>运行时长</td>
+            <td th:text="${server.jvm.runTime}">0天0时0分0秒</td>
+        </tr>
+        <tr>
+            <td colspan="1">安装路径</td>
+            <td colspan="3" th:text="${server.jvm.home}"></td>
+        </tr>
+        <tr>
+            <td colspan="1">项目路径</td>
+            <td colspan="3" th:text="${server.sys.userDir}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

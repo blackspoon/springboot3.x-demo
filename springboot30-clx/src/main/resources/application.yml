@@ -1,0 +1,13 @@
+spring:
+  profiles:
+    active: dev
+  messages:
+    basename: i18n/messages
+
+server:
+  port: 3100
+
+mybatis:
+  mapper-locations: classpath:mapper/*Mapper.xml
+  configuration:
+    map-underscore-to-camel-case: true

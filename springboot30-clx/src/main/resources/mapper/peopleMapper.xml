@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD
+Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.clx.springboot30.application.persistent.mapper.PeopleMapper">
+    <select id="getPeople" resultType="com.clx.springboot30.application.model.People">
+        select * from people
+    </select>
+    <select id="getPeopleByPersonId" resultType="com.clx.springboot30.application.model.People">
+        select * from people where person_id = #{personId}
+    </select>
+    <insert id="save">
+        insert into people(person_id,first_name,last_name) values(#{personId},#{firstName},#{lastName})
+    </insert>
+    <update id="update">
+        update people set last_name = #{lastName} where person_id = #{personId}
+    </update>
+    <delete id="delete">
+        delete from people where person_id = #{personId}
+    </delete>
+</mapper>

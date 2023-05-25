@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>thymeleaf1</title>
+</head>
+
+<body>
+共通值：<span th:text="*{level}"/>
+<form th:object="${thymeleafForm1}">
+    来自于thymeleaf1：<span th:text="${thymeleafForm1.test1}"/>
+
+    <table border="1">
+        <tr>
+            <td>colunm1</td>
+            <td>colunm2</td>
+            <td>colunm3</td>
+        </tr>
+        <tr th:each="thymeleaf:${thymeleafForm1.thymeleafList}">
+            <td><span th:text="${thymeleaf.colunm1}"></span></td>
+            <td><span th:text="${thymeleaf.colunm2}"></span></td>
+            <td><span th:text="${thymeleaf.colunm3}"></span></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
