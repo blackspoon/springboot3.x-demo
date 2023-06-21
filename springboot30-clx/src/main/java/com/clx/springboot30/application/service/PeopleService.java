@@ -4,7 +4,6 @@ import com.clx.springboot30.application.model.People;
 import com.clx.springboot30.application.persistent.jpa.PeopleRepository;
 import com.clx.springboot30.application.persistent.mapper.PeopleMapper;
 import com.clx.springboot30.application.persistent.template.PeopleTemplate;
-import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,14 +11,17 @@ import java.util.List;
 @Service
 public class PeopleService {
 
-    @Resource
     private PeopleTemplate peopleTemplate;
 
-    @Resource
     private PeopleMapper peopleMapper;
 
-    @Resource
     private PeopleRepository peopleRepository;
+
+    public PeopleService(PeopleTemplate peopleTemplate, PeopleMapper peopleMapper, PeopleRepository peopleRepository) {
+        this.peopleTemplate = peopleTemplate;
+        this.peopleMapper = peopleMapper;
+        this.peopleRepository = peopleRepository;
+    }
 
     //-------------------------------NamedParameterJdbcTemplate start-----------------------
 

@@ -2,7 +2,6 @@ package com.clx.springboot30.application.controller;
 
 import com.clx.springboot30.application.model.People;
 import com.clx.springboot30.application.service.PeopleService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,8 +13,11 @@ import java.util.concurrent.Semaphore;
 @RestController
 public class SnowSlideController {
 
-    @Autowired
     private PeopleService peopleService;
+
+    public SnowSlideController(PeopleService peopleService) {
+        this.peopleService = peopleService;
+    }
 
     // 令牌
     static Semaphore semaphore = new Semaphore(200);

@@ -4,7 +4,6 @@ import com.clx.springboot30.application.model.People;
 import com.clx.springboot30.application.service.RankingService;
 import com.clx.springboot30.application.service.RedisService;
 import jakarta.servlet.http.HttpServletRequest;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ZSetOperations;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,14 +15,17 @@ import java.util.*;
 @RestController
 public class RedisController {
 
-    @Autowired
     private RedisService redisService;
 
-    @Autowired
     private RankingService rankingService;
 
-    @Autowired
     StringRedisTemplate stringRedisTemplate;
+
+    public RedisController(RedisService redisService, RankingService rankingService, StringRedisTemplate stringRedisTemplate) {
+        this.redisService = redisService;
+        this.rankingService = rankingService;
+        this.stringRedisTemplate = stringRedisTemplate;
+    }
 
     //-------------------------------DB Cache Start-----------------------------------------------------
     /**

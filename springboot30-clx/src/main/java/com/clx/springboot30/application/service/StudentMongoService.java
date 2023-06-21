@@ -3,7 +3,6 @@ package com.clx.springboot30.application.service;
 import com.clx.springboot30.application.model.Student;
 import com.clx.springboot30.application.persistent.mongo.StudentDao;
 import org.bson.types.ObjectId;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,8 +10,11 @@ import java.util.List;
 @Service
 public class StudentMongoService {
 
-    @Autowired
     private StudentDao studentDao;
+
+    public StudentMongoService(StudentDao studentDao) {
+        this.studentDao = studentDao;
+    }
 
     public void insert(Student student) {
         studentDao.insert(student);

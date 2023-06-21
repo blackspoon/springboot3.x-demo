@@ -1,6 +1,5 @@
 package com.clx.springboot30.application.controller;
 
-import jakarta.annotation.Resource;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,8 +8,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class KafkaController {
 
-    @Resource
     private KafkaTemplate<String, String> kafkaTemplate;
+
+    public KafkaController(KafkaTemplate<String, String> kafkaTemplate) {
+        this.kafkaTemplate = kafkaTemplate;
+    }
 
     /**
      * http://localhost:3100/kafkaSend?msg=high

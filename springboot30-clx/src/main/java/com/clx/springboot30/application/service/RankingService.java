@@ -5,7 +5,6 @@ import com.clx.springboot30.application.model.UserScore;
 import com.clx.springboot30.application.persistent.mapper.UserMapper;
 import com.clx.springboot30.application.persistent.mapper.UserScoreMapper;
 import com.clx.springboot30.component.RedisManager;
-import jakarta.annotation.Resource;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.data.redis.core.ZSetOperations;
 import org.springframework.stereotype.Service;
@@ -24,15 +23,17 @@ public class RankingService implements InitializingBean {
 
     private static final String SALE_SCORE = "sale_score_rank:";
 
-    @Resource
     private RedisManager redisManager;
 
-    @Resource
     private UserMapper userMapper;
 
-    @Resource
     private UserScoreMapper userScoreMapper;
 
+    public RankingService(RedisManager redisManager, UserMapper userMapper, UserScoreMapper userScoreMapper) {
+        this.redisManager = redisManager;
+        this.userMapper = userMapper;
+        this.userScoreMapper = userScoreMapper;
+    }
 
     //---------------------test redis start-------------------------------------
 

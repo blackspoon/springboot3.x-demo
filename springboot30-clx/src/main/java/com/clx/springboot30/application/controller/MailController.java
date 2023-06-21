@@ -1,7 +1,6 @@
 package com.clx.springboot30.application.controller;
 
 import jakarta.mail.internet.MimeMessage;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.mail.SimpleMailMessage;
@@ -15,11 +14,14 @@ import org.thymeleaf.context.Context;
 @RestController
 public class MailController {
 
-    @Autowired
     private JavaMailSender mailSender;
 
-    @Autowired
     private TemplateEngine templateEngine;
+
+    public MailController(JavaMailSender mailSender, TemplateEngine templateEngine) {
+        this.mailSender = mailSender;
+        this.templateEngine = templateEngine;
+    }
 
     @Value("${mail.fromMail.addr}")
     private String from;

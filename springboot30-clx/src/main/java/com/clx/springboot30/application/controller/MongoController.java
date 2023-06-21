@@ -3,7 +3,6 @@ package com.clx.springboot30.application.controller;
 import com.clx.springboot30.application.model.Student;
 import com.clx.springboot30.application.service.StudentMongoService;
 import org.bson.types.ObjectId;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -12,8 +11,11 @@ import java.util.List;
 @RestController
 public class MongoController {
 
-    @Autowired
     private StudentMongoService mongoService;
+
+    public MongoController(StudentMongoService mongoService) {
+        this.mongoService = mongoService;
+    }
 
     /**
      * http://localhost:3100/mongo/insert?age=60&gender=male&name=lisi

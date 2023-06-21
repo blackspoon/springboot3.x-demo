@@ -2,7 +2,6 @@ package com.clx.springboot30.application.service;
 
 import com.clx.springboot30.application.model.People;
 import com.clx.springboot30.application.persistent.mapper.PeopleMapper;
-import jakarta.annotation.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cache.annotation.CacheConfig;
@@ -20,8 +19,11 @@ public class RedisService {
 
     private static Logger logger = LoggerFactory.getLogger(RedisService.class);
 
-    @Resource
     private PeopleMapper peopleMapper;
+
+    public RedisService(PeopleMapper peopleMapper) {
+        this.peopleMapper = peopleMapper;
+    }
 
     /**
      * insert people

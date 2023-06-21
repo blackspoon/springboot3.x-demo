@@ -6,7 +6,6 @@ import com.clx.springboot30.application.service.PeopleService;
 import com.taobao.stresstester.StressTestUtils;
 import com.taobao.stresstester.core.StressResult;
 import com.taobao.stresstester.core.StressTask;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,8 +14,11 @@ import java.util.List;
 @RestController
 public class PeopleController {
 
-    @Autowired
     private PeopleService peopleService;
+
+    public PeopleController(PeopleService peopleService) {
+        this.peopleService = peopleService;
+    }
 
     //-------------------------------NamedParameterJdbcTemplate start-----------------------
 
